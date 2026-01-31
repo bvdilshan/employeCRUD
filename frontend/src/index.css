@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+ 
+  --color-brand-primary: #5A7ACD;    /* Indigo */
+  --color-brand-dark: #0f172a;       /* Dark Slate */
+  --color-brand-bg: #F5F2F2;         /* Light Gray/Blue */
+}
+
+body {
+  @apply bg-brand-bg text-brand-dark font-sans antialiased;
+}
