@@ -15,8 +15,8 @@ const Dashboard = () => {
   const fetchEmployees = async () => {
     try {
       const url = dept 
-        ? `http://localhost:5000/api/employees?dept=${dept}` 
-        : "http://localhost:5000/api/employees";
+        ? `http://54.146.96.129:5000/api/employees?dept=${dept}` 
+        : "http://54.146.96.129:5000/api/employees";
       const res = await axios.get(url);
       setEmployees(res.data);
     } catch (err) { console.error("Fetch error", err); }
@@ -48,7 +48,7 @@ const handleSubmit = async (e) => {
 
     
     const res = await axios.post(
-      "http://localhost:5000/api/employees/add", 
+      "http://54.146.96.129:5000/api/employees/add", 
       dataToSend,
       {
         headers: {
@@ -77,7 +77,7 @@ const updateStatus = async (id, currentStatus) => {
     const token = authData?.token;
 
     await axios.put(
-      `http://localhost:5000/api/employees/${id}`, 
+      `http://54.146.96.129:5000/api/employees/${id}`, 
       { status: newStatus },
       { headers: { Authorization: `Bearer ${token}` } } 
     );
@@ -94,7 +94,7 @@ const deleteEmployee = async (id) => {
       const token = authData?.token;
 
      
-      await axios.delete(`http://localhost:5000/api/employees/${id}`, {
+      await axios.delete(`http://54.146.96.129:5000/api/employees/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -108,7 +108,6 @@ const deleteEmployee = async (id) => {
 };
   return (
     <div className="p-8 max-w-6xl mx-auto">
-      {/* Header Area */}
       <div className="flex justify-between items-start mb-8">
         <div>
           <h1 className="text-3xl font-bold text-brand-dark">Staff Directory</h1>
@@ -116,7 +115,6 @@ const deleteEmployee = async (id) => {
         </div>
         
         <div className="flex gap-3">
-          {/* Logout Button */}
           <button 
             onClick={logout}
             className="bg-white text-red-500 border border-red-100 px-4 py-2 rounded-lg font-medium hover:bg-red-50 transition"
@@ -133,7 +131,6 @@ const deleteEmployee = async (id) => {
         </div>
       </div>
 
-      {/* Filter Bar */}
       <div className="bg-white p-4 rounded-xl border border-slate-200 mb-6 flex items-center gap-4">
         <span className="text-sm font-bold text-slate-400 uppercase tracking-tight">Filter:</span>
         <select 
@@ -147,7 +144,6 @@ const deleteEmployee = async (id) => {
         </select>
       </div>
 
-      {/* List Layout */}
       <div className="grid gap-4">
         {employees.length > 0 ? employees.map(emp => (
           <div key={emp._id} className="bg-white p-5 rounded-2xl flex justify-between items-center shadow-sm border border-slate-100 hover:border-brand-primary/30 transition-colors">
@@ -188,7 +184,6 @@ const deleteEmployee = async (id) => {
         )}
       </div>
 
-      {/* --- ADD MODAL --- */}
       {showModal && (
         <div className="fixed inset-0 bg-brand-dark/40 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-3xl p-8 w-full max-w-md shadow-2xl">
