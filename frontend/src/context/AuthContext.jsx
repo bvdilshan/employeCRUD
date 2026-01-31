@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     // backend URL 
-    const res = await axios.post("http://localhost:5000/api/auth/login", credentials);
+    const res = await axios.post("http://54.146.96.129:5000/api/auth/login", credentials);
     setUser(res.data);
     localStorage.setItem("user", JSON.stringify(res.data));
   };
